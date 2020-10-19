@@ -34,7 +34,8 @@ public class AddExerciseCommand extends Command {
                 if (amountOfCaloriesBurnt.get() < -1) {
                     throw new NumberFormatException();
                 }
-                exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt, createdDateTime));
+                //exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt, createdDateTime));
+                exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt));
                 storage.writeExerciseList(exerciseList);
                 Ui.printCustomMessage("The following exercise has been added: " + nameOfExercise);
             } else if (command.split(" ").length == 2) {
@@ -46,7 +47,9 @@ public class AddExerciseCommand extends Command {
                 if (durationOfExercise < 0) {
                     throw new FitrException();
                 }
-                exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt, durationOfExercise, createdDateTime));
+                //exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt,
+                // durationOfExercise, createdDateTime));
+                exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt, durationOfExercise));
                 storage.writeExerciseList(exerciseList);
                 Ui.printCustomMessage("The following exercise has been added: " + nameOfExercise);
             }

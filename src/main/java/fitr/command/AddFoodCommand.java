@@ -34,7 +34,8 @@ public class AddFoodCommand extends Command {
                 if (amountOfCalories.get() < 0) {
                     throw new NumberFormatException();
                 }
-                foodList.addFood(new Food(nameOfFood, amountOfCalories, createdDateTime));
+                //foodList.addFood(new Food(nameOfFood, amountOfCalories, createdDateTime));
+                foodList.addFood(new Food(nameOfFood, amountOfCalories));
                 storage.writeFoodList(foodList);
                 Ui.printCustomMessage("The following food has been added: " + nameOfFood);
             } else if (command.split(" ").length == 2) {
@@ -46,7 +47,8 @@ public class AddFoodCommand extends Command {
                 if (amountOfFood < 0) {
                     throw new FitrException();
                 }
-                foodList.addFood(new Food(nameOfFood, amountOfCalories, amountOfFood, createdDateTime));
+                //foodList.addFood(new Food(nameOfFood, amountOfCalories, amountOfFood, createdDateTime));
+                foodList.addFood(new Food(nameOfFood, amountOfCalories, amountOfFood));
                 storage.writeFoodList(foodList);
                 Ui.printCustomMessage("The following food has been added: " + nameOfFood);
             }

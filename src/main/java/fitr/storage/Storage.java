@@ -142,7 +142,7 @@ public class Storage {
             line = readFile.nextLine();
             arguments = line.split(COMMA_SEPARATOR);
             foodList.add(new Food(arguments[0],
-                    new Calorie(Integer.parseInt(arguments[1])), Integer.parseInt(arguments[2]), arguments[3]));
+                    new Calorie(Integer.parseInt(arguments[1])), Integer.parseInt(arguments[2]))); //, arguments[3]
         }
 
         LOGGER.fine("Food list file read successfully.");
@@ -164,8 +164,8 @@ public class Storage {
             food = foodList.getFood(i);
             file.write(food.getFoodName()
                     + COMMA_SEPARATOR + food.getCalories()
-                    + COMMA_SEPARATOR + food.getAmountOfFood()
-                    + COMMA_SEPARATOR + food.getCreatedDateTime() + System.lineSeparator());
+                    + COMMA_SEPARATOR + food.getAmountOfFood() + System.lineSeparator());
+            //        + COMMA_SEPARATOR + food.getCreatedDateTime()
         }
 
         LOGGER.fine("Food list file written successfully.");
@@ -190,7 +190,7 @@ public class Storage {
             line = readFile.nextLine();
             arguments = line.split(COMMA_SEPARATOR);
             exerciseList.add(new Exercise(arguments[0],
-                    new Calorie(Integer.parseInt(arguments[1])), Integer.parseInt(arguments[2]), arguments[3]));
+                    new Calorie(Integer.parseInt(arguments[1])), Integer.parseInt(arguments[2]))); //, arguments[3]
         }
 
         LOGGER.fine("Exercise list file read successfully.");
@@ -212,8 +212,8 @@ public class Storage {
             exercise = exerciseList.getExercise(i);
             file.write(exercise.getNameOfExercise()
                     + COMMA_SEPARATOR + exercise.getCalories()
-                    + COMMA_SEPARATOR + exercise.getDuration()
-                    + COMMA_SEPARATOR + exercise.getCreatedDateTime() + System.lineSeparator());
+                    + COMMA_SEPARATOR + exercise.getDuration() + System.lineSeparator());
+            //        + COMMA_SEPARATOR + exercise.getCreatedDateTime() + System.lineSeparator());
         }
 
         LOGGER.fine("Exercise list file written successfully.");
