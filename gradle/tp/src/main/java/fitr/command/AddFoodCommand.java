@@ -28,7 +28,7 @@ public class AddFoodCommand extends Command {
             if (nameOfFood.isEmpty()) {
                 throw new ArrayIndexOutOfBoundsException();
             }
-            command = command.split("/", 2)[1];
+            command = command.split("/", 2)[1].trim();
             if (command.split(" ").length == 1) {
                 Calorie amountOfCalories = new Calorie(Integer.parseInt(command.split(" ")[0]));
                 if (amountOfCalories.get() < 0) {
@@ -51,7 +51,7 @@ public class AddFoodCommand extends Command {
                 Ui.printCustomMessage("The following food has been added: " + nameOfFood);
             }
         } catch (NumberFormatException | NullPointerException e) {
-            Ui.printCustomError("Sorry, invalid calorie amount entered");
+            Ui.printCustomError("Sorry calories have to be a number");
         } catch (ArrayIndexOutOfBoundsException e) {
             Ui.printCustomError("Please key in the correct format");
         } catch (IOException e) {

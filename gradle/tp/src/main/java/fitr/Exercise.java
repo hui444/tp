@@ -1,5 +1,9 @@
 package fitr;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Exercise {
     protected String nameOfExercise; // The name of the Exercise
     protected Calorie caloriesBurnt;// Amount of calories burnt from exercise

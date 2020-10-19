@@ -28,7 +28,7 @@ public class AddExerciseCommand extends Command {
                 throw new ArrayIndexOutOfBoundsException();
             }
             nameOfExercise = nameOfExercise.trim();
-            command = command.split("/", 2)[1];
+            command = command.split("/", 2)[1].trim();
             if (command.split(" ").length == 1) {
                 Calorie amountOfCaloriesBurnt = new Calorie(Integer.parseInt(command.split(" ")[0]));
                 if (amountOfCaloriesBurnt.get() < -1) {
@@ -51,7 +51,7 @@ public class AddExerciseCommand extends Command {
                 Ui.printCustomMessage("The following exercise has been added: " + nameOfExercise);
             }
         } catch (NumberFormatException | NullPointerException e) {
-            Ui.printCustomError("Sorry, invalid calorie amount entered");
+            Ui.printCustomError("Sorry calories have to be a positive number");
         } catch (ArrayIndexOutOfBoundsException e) {
             Ui.printCustomError("Please key in the correct format");
         } catch (IOException e) {

@@ -7,7 +7,7 @@ public class Food {
     protected int caloricRate;// Caloric Rate of the food, if amount is not given we will take it as a whole unit.
     protected String createdDateTime;
 
-    public Food(String nameOfFood,Calorie calories,int amount, String createdDateTime) {
+    public Food(String nameOfFood, Calorie calories, int amount, String createdDateTime) {
         this.nameOfFood = nameOfFood;
         this.caloriesInFood = calories;
         this.amountOfFood = amount;
@@ -15,7 +15,7 @@ public class Food {
         this.createdDateTime = createdDateTime;
     }
 
-    public Food(String name,Calorie caloriesBurnt, String createdDateTime) {
+    public Food(String name, Calorie caloriesBurnt, String createdDateTime) {
         this.nameOfFood = name;
         this.caloriesInFood = caloriesBurnt;
         this.caloricRate = this.caloriesInFood.get() / this.amountOfFood;

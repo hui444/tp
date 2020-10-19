@@ -1,5 +1,8 @@
 package fitr.parser;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import fitr.command.AddExerciseCommand;
@@ -35,9 +38,9 @@ public class Parser {
         String arguments = matcher.group("arguments").trim();
         switch (userCommand.toLowerCase()) {
         case Commands.COMMAND_FOOD:
-            return new AddFoodCommand(arguments);
+            return new AddFoodCommand(arguments, dateTime());
         case Commands.COMMAND_EXERCISE:
-            return new AddExerciseCommand(arguments);
+            return new AddExerciseCommand(arguments, dateTime());
         case Commands.COMMAND_VIEW:
             return new ViewCommand(arguments);
         case Commands.COMMAND_EDIT_PROFILE:
@@ -51,5 +54,12 @@ public class Parser {
         default:
             return new InvalidCommand(arguments);
         }
+    }
+
+    public static String dateTime() {
+        Calendar calendar = Calendar.getInstance();
+        Date currentDateTime = calendar.getTime();
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("d/M/y h:m:s a");
+        return dateFormatter.format(currentDateTime);
     }
 }
