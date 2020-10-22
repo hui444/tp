@@ -15,6 +15,8 @@ import fitr.command.ExitCommand;
 import fitr.command.AddGoalCommand;
 import fitr.common.Commands;
 
+import static fitr.DateManager.getCurrentDate;
+
 /**
  * Parses the user input.
  */
@@ -37,9 +39,9 @@ public class Parser {
         String arguments = matcher.group("arguments").trim();
         switch (userCommand.toLowerCase()) {
         case Commands.COMMAND_FOOD:
-            return new AddFoodCommand(arguments);
+            return new AddFoodCommand(arguments, getCurrentDate());
         case Commands.COMMAND_EXERCISE:
-            return new AddExerciseCommand(arguments);
+            return new AddExerciseCommand(arguments, getCurrentDate());
         case Commands.COMMAND_VIEW:
             return new ViewCommand(arguments);
         case Commands.COMMAND_EDIT_PROFILE:

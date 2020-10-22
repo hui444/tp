@@ -16,8 +16,11 @@ import java.io.IOException;
 import static fitr.common.Commands.COMMAND_FOOD;
 
 public class AddFoodCommand extends Command {
-    public AddFoodCommand(String command) {
+    private String createdDate;
+
+    public AddFoodCommand(String command, String createdDate) {
         this.command = command;
+        this.createdDate = createdDate;
     }
 
     @Override
@@ -29,13 +32,13 @@ public class AddFoodCommand extends Command {
             if (nameOfFood.isEmpty()) {
                 throw new ArrayIndexOutOfBoundsException();
             }
-            command = command.split("/", 2)[1];
+            command = command.split("/", 2)[1].trim();
             if (command.split(" ").length == 1) {
                 Calorie amountOfCalories = new Calorie(Integer.parseInt(command.split(" ")[0]));
                 if (amountOfCalories.get() < 0) {
                     throw new NumberFormatException();
                 }
-                foodList.addFood(new Food(nameOfFood, amountOfCalories));
+                foodList.addFood(new Food(createdDate, nameOfFood, amountOfCalories));
                 storage.writeFoodList(foodList);
                 Ui.printCustomMessage("The following food has been added: " + nameOfFood);
             } else if (command.split(" ").length == 2) {
@@ -47,7 +50,7 @@ public class AddFoodCommand extends Command {
                 if (amountOfFood < 0) {
                     throw new FitrException();
                 }
-                foodList.addFood(new Food(nameOfFood, amountOfCalories, amountOfFood));
+                foodList.addFood(new Food(createdDate, nameOfFood, amountOfCalories, amountOfFood));
                 storage.writeFoodList(foodList);
                 Ui.printCustomMessage("The following food has been added: " + nameOfFood);
             }

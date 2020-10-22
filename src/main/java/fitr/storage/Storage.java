@@ -155,8 +155,8 @@ public class Storage {
         while (readFile.hasNext()) {
             line = readFile.nextLine();
             arguments = line.split(COMMA_SEPARATOR);
-            foodList.add(new Food(arguments[0],
-                    new Calorie(Integer.parseInt(arguments[1])), Integer.parseInt(arguments[2])));
+            foodList.add(new Food(arguments[0], arguments[1],
+                    new Calorie(Integer.parseInt(arguments[2])), Integer.parseInt(arguments[3])));
         }
 
         LOGGER.fine("Food list file read successfully.");
@@ -176,7 +176,8 @@ public class Storage {
 
         for (int i = 0; i < foodList.getSize(); i++) {
             food = foodList.getFood(i);
-            file.write(food.getFoodName()
+            file.write(food.getCreatedDate()
+                    + COMMA_SEPARATOR + food.getFoodName()
                     + COMMA_SEPARATOR + food.getCalories()
                     + COMMA_SEPARATOR + food.getAmountOfFood() + System.lineSeparator());
         }
@@ -202,8 +203,8 @@ public class Storage {
         while (readFile.hasNext()) {
             line = readFile.nextLine();
             arguments = line.split(COMMA_SEPARATOR);
-            exerciseList.add(new Exercise(arguments[0],
-                    new Calorie(Integer.parseInt(arguments[1]))));
+            exerciseList.add(new Exercise(arguments[0], arguments[1],
+                    new Calorie(Integer.parseInt(arguments[2]))));
         }
 
         LOGGER.fine("Exercise list file read successfully.");
@@ -223,7 +224,8 @@ public class Storage {
 
         for (int i = 0; i < exerciseList.getSize(); i++) {
             exercise = exerciseList.getExercise(i);
-            file.write(exercise.getNameOfExercise()
+            file.write(exercise.getCreatedDate()
+                    + COMMA_SEPARATOR + exercise.getNameOfExercise()
                     + COMMA_SEPARATOR + exercise.getCalories() + System.lineSeparator());
         }
 

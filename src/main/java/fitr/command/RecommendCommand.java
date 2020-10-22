@@ -1,17 +1,17 @@
 package fitr.command;
 
-
 import fitr.Calorie;
 import fitr.Recommender;
 import fitr.StandardExercise;
 import fitr.StandardExerciseList;
 import fitr.list.ExerciseList;
+import fitr.DateManager;
+import fitr.Exercise;
 import fitr.list.FoodList;
 import fitr.list.GoalList;
 import fitr.storage.Storage;
 import fitr.ui.Ui;
 import fitr.user.User;
-import fitr.Exercise;
 
 
 import java.util.ArrayList;
@@ -33,7 +33,8 @@ public class RecommendCommand extends Command {
                 Calorie caloriesBurnt = new Calorie((int) (standardExercise.getQuantity().get(fitnessLevel)
                         * standardExercise.getCaloricBurnRate()
                         * standardExercise.getSets().get(fitnessLevel)));
-                exerciseList.addExercise(new Exercise(standardExercise.getName(),caloriesBurnt));
+                exerciseList.addExercise(new Exercise(DateManager.getCurrentDate(),
+                        standardExercise.getName(), caloriesBurnt));
             }
         } else if (checker.equals("n")) {
             Ui.printCustomMessage("Next time then!");
